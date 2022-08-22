@@ -1,9 +1,13 @@
 package com.orbisbs.doservice.cars;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.orbisbs.doservice.users.User;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -28,4 +32,10 @@ public class Car {
     private String drivetrain;
     @NotEmpty
     private String oilFrequency;
+
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "enrolledCars")
+    private Set<User> users = new HashSet<>();
+
 }
