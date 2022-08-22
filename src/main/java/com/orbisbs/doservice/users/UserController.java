@@ -41,4 +41,10 @@ public class UserController {
         userService.deleteUser(id);
     }
 
+    @RequestMapping(method = RequestMethod.PUT, value = "/users/{userId}/car/{carId}")
+    public User enrollLangToUser(@PathVariable Long userId,
+                                 @PathVariable Long carId) {
+        return userService.enrollCarToUser(userId, carId);
+    }
+
 }
