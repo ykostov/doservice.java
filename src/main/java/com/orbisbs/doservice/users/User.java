@@ -2,6 +2,7 @@ package com.orbisbs.doservice.users;
 
 
 import com.orbisbs.doservice.cars.Car;
+import com.orbisbs.doservice.oil.Oil;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,6 +38,15 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "car_id")
     )
     private Set<Car> enrolledCars = new HashSet<>();
+
+
+    @ManyToMany
+    @JoinTable(
+            name="user_oil",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "oil_id")
+    )
+    private Set<Oil> enrolledOilChanges = new HashSet<>();
 
 
     public void enrollCars(Car car) {
