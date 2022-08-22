@@ -2,12 +2,15 @@ package com.orbisbs.doservice.users;
 
 
 import lombok.AllArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
 @AllArgsConstructor
+
 public class UserController {
 
 
@@ -24,7 +27,7 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/users")
-    public void addUser(@RequestBody User user) {
+    public void addUser(@Valid @RequestBody User user) {
         userService.addUser(user);
     }
 
