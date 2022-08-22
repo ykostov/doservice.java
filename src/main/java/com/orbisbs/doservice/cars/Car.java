@@ -33,6 +33,7 @@ public class Car {
     @NotEmpty
     private String oilFrequency;
 
+    private String mileage;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "enrolledCars")
