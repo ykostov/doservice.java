@@ -34,8 +34,8 @@ public class UserService {
     }
 
     public User updateUser(Long id, User user) {
-
-        return userRepository.save(Objects.requireNonNull(userRepository.findById(id).orElse(null)));
+        user.setId(id);
+        return userRepository.save(user);
     }
 
     public void deleteUser(Long id) {

@@ -33,8 +33,8 @@ public class CarService {
     }
 
     public Car updateCar(Long id, Car car) {
-
-        return carRepository.save(Objects.requireNonNull(carRepository.findById(id).orElse(null)));
+        car.setId(id);
+        return carRepository.save(car);
     }
 
     public void deleteCar(Long id) {

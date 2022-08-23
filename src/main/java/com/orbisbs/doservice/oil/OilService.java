@@ -30,8 +30,8 @@ public class OilService {
     }
 
     public Oil updateOil(Long id, Oil oil) {
-
-        return oilRepository.save(Objects.requireNonNull(oilRepository.findById(id).orElse(null)));
+        oil.setId(id);
+        return oilRepository.save(oil);
     }
 
     public void deleteOil(Long id) {
