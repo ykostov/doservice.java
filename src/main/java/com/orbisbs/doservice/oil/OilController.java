@@ -2,15 +2,13 @@ package com.orbisbs.doservice.oil;
 
 
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
 @AllArgsConstructor
+@RestController
 public class OilController {
 
     private final OilService oilService;

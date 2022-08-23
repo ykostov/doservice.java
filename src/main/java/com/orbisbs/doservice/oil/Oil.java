@@ -7,8 +7,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.*;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,15 +22,21 @@ import java.util.Set;
 
 @Table(name = "oil_changes", schema = "public")
 public class Oil {
+
+    // id
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
 
+    private String mileage;
+    private String Date;
 
+    // user-oil manyToMany
 
     @JsonIgnore
     @ManyToMany(mappedBy = "enrolledOilChanges")
     private Set<User> users = new HashSet<>();
- 
+
 }
