@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 @AllArgsConstructor
@@ -25,8 +24,8 @@ public class OilService {
         return oil;
     }
 
-    public void addOil(Oil oil) {
-        oilRepository.save(oil);
+    public Oil addOil(Oil oil) {
+        return oilRepository.save(oil);
     }
 
     public Oil updateOil(Long id, Oil oil) {

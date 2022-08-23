@@ -2,14 +2,11 @@ package com.orbisbs.doservice.cars;
 
 import com.orbisbs.doservice.oil.Oil;
 import com.orbisbs.doservice.oil.OilRepository;
-import com.orbisbs.doservice.users.User;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 @AllArgsConstructor
@@ -28,8 +25,9 @@ public class CarService {
         return cars;
     }
 
-    public void addCar(Car car) {
+    public Car addCar(Car car) {
         carRepository.save(car);
+        return car;
     }
 
     public Car updateCar(Long id, Car car) {
