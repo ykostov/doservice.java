@@ -32,7 +32,7 @@ public class Oil {
     private Long id;
 
     private String mileage;
-    private String Date;
+    private String date;
 
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
