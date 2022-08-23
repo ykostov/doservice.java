@@ -2,14 +2,12 @@ package com.orbisbs.doservice.users;
 
 import com.orbisbs.doservice.cars.Car;
 import com.orbisbs.doservice.cars.CarRepository;
-import com.orbisbs.doservice.oil.Oil;
 import com.orbisbs.doservice.oil.OilRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 @AllArgsConstructor
@@ -29,8 +27,9 @@ public class UserService {
         return users;
     }
 
-    public void addUser(User user) {
+    public User addUser(User user) {
         userRepository.save(user);
+        return user;
     }
 
     public User updateUser(Long id, User user) {
