@@ -62,9 +62,9 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/users/{userId}/car/{carId}")
-    public User enrollCarToUser(@PathVariable Long userId,
+    public void enrollCarToUser(@PathVariable Long userId,
                                  @PathVariable Long carId) {
-        return userService.enrollCarToUser(userId, carId);
+        userService.enrollCarToUser(userId, carId);
     }
 
 
