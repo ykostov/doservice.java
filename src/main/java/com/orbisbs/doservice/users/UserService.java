@@ -2,6 +2,8 @@ package com.orbisbs.doservice.users;
 
 import com.orbisbs.doservice.cars.Car;
 import com.orbisbs.doservice.cars.CarRepository;
+import com.orbisbs.doservice.oil.Oil;
+import com.orbisbs.doservice.oil.OilRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,7 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final CarRepository carRepository;
+    private final OilRepository oilRepository;
 
     public User getUser(Long id) {
         return userRepository.findById(id).orElse(null);
@@ -31,8 +34,8 @@ public class UserService {
     }
 
     public User updateUser(Long id, User user) {
-
-        return userRepository.save(Objects.requireNonNull(userRepository.findById(id).orElse(null)));
+        user.setId(id);
+        return userRepository.save(user);
     }
 
     public void deleteUser(Long id) {
@@ -42,7 +45,8 @@ public class UserService {
     public User enrollCarToUser(Long userId, Long carId) {
         User user = userRepository.findById(userId).get();
         Car car = carRepository.findById(carId).get();
-        user.enrollCars(car);
+        car.enrollUserForCar(user);
+        carRepository.save(car);
         return userRepository.save(user);
     }
 

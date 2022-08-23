@@ -40,4 +40,10 @@ public class CarController {
         carService.deleteCar(id);
     }
 
+    @RequestMapping(method = RequestMethod.PUT, value = "/car/{carId}/oil/{oilId}")
+    public Car enrollOilChangeToCar(@PathVariable Long carId,
+                                @PathVariable Long oilId) {
+        return carService.enrollOilChangeToCar(carId, oilId);
+    }
+
 }

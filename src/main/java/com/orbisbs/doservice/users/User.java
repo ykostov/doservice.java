@@ -1,7 +1,9 @@
 package com.orbisbs.doservice.users;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.orbisbs.doservice.cars.Car;
+import com.orbisbs.doservice.oil.Oil;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,16 +32,8 @@ public class User {
     private String name;
 
 
-    @ManyToMany
-    @JoinTable(
-            name="user_car",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "car_id")
-    )
-    private Set<Car> enrolledCars = new HashSet<>();
+    @OneToMany(mappedBy = "user")
+    private Set<Car> cars = new HashSet<>();
 
 
-    public void enrollCars(Car car) {
-        enrolledCars.add(car);
-    }
 }

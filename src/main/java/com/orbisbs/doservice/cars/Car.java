@@ -1,6 +1,7 @@
 package com.orbisbs.doservice.cars;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.orbisbs.doservice.oil.Oil;
 import com.orbisbs.doservice.users.User;
 import lombok.*;
 
@@ -35,8 +36,20 @@ public class Car {
 
     private String mileage;
 
+//    @JsonIgnore
+//    @ManyToMany(mappedBy = "enrolledCars")
+//    private Set<User> users = new HashSet<>();
+
     @JsonIgnore
-    @ManyToMany(mappedBy = "enrolledCars")
-    private Set<User> users = new HashSet<>();
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
+    public void enrollUserForCar(User user) {
+        this.user = user;
+    }
+
+    @OneToMany(mappedBy = "car")
+    private Set<Oil> oil = new HashSet<>();
 
 }
