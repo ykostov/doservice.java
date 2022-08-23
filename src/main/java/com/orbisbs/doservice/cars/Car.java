@@ -35,8 +35,17 @@ public class Car {
 
     private String mileage;
 
+//    @JsonIgnore
+//    @ManyToMany(mappedBy = "enrolledCars")
+//    private Set<User> users = new HashSet<>();
+
     @JsonIgnore
-    @ManyToMany(mappedBy = "enrolledCars")
-    private Set<User> users = new HashSet<>();
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
+    public void enrollUserForCar(User user) {
+        this.user = user;
+    }
 
 }
