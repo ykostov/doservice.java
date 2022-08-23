@@ -32,34 +32,8 @@ public class User {
     private String name;
 
 
-//    @ManyToMany
-//    @JoinTable(
-//            name="user_car",
-//            joinColumns = @JoinColumn(name = "user_id"),
-//            inverseJoinColumns = @JoinColumn(name = "car_id")
-//    )
-//    private Set<Car> enrolledCars = new HashSet<>();
-
-
-//    @ManyToMany
-//    @JoinTable(
-//            name="user_oil",
-//            joinColumns = @JoinColumn(name = "user_id"),
-//            inverseJoinColumns = @JoinColumn(name = "oil_id")
-//    )
-//    private Set<Oil> enrolledOilChanges = new HashSet<>();
-
-
     @OneToMany(mappedBy = "user")
     private Set<Car> cars = new HashSet<>();
 
-
-
-    public void enrollCars(Car car) {
-//        enrolledCars.add(car);
-    }
-    public void enrollOil(Oil oil) {
-//        enrolledOilChanges.add(oil);
-    }
 
 }

@@ -50,10 +50,4 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User enrollOilChangeToUser(Long userId, Long oilId) {
-        User user = userRepository.findById(userId).get();
-        Oil oil = oilRepository.findById(oilId).get();
-        user.enrollOil(oil);
-        return userRepository.save(user);
-    }
 }
