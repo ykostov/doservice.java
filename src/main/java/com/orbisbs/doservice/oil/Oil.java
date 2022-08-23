@@ -2,6 +2,7 @@ package com.orbisbs.doservice.oil;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.orbisbs.doservice.cars.Car;
 import com.orbisbs.doservice.users.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,10 +34,19 @@ public class Oil {
     private String mileage;
     private String Date;
 
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "car_id", referencedColumnName = "id")
+    private Car car;
+
+
+    public void enrollCarToOilChange(Car car) {
+        this.car = car;
+    }
     // user-oil manyToMany
 
-    @JsonIgnore
-    @ManyToMany(mappedBy = "enrolledOilChanges")
-    private Set<User> users = new HashSet<>();
+//    @JsonIgnore
+//    @ManyToMany(mappedBy = "enrolledOilChanges")
+//    private Set<User> users = new HashSet<>();
 
 }
