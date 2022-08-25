@@ -1,5 +1,6 @@
 package com.orbisbs.doservice.cars;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.orbisbs.doservice.oil.Oil;
 import lombok.Data;
 
@@ -15,5 +16,6 @@ public class CarDto {
     private String drivetrain;
     private String oilFrequency;
     private String mileage;
+    @JsonIgnore
     private Set<Oil> oil = new HashSet<>();
 }
