@@ -36,23 +36,23 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/users")
-    public ResponseEntity<UserDto> addUser(@Valid @RequestBody UserDto userDto) {
+    public ResponseEntity<UserDto2> addUser(@Valid @RequestBody UserDto2 userDto) {
         User userRequest = modelMapper.map(userDto, User.class);
         User user = userService.addUser(userRequest);
         // convert entity to DTO
-        UserDto userResponse = modelMapper.map(user, UserDto.class);
+        UserDto2 userResponse = modelMapper.map(user, UserDto2.class);
 
-        return new ResponseEntity<UserDto>(userResponse, HttpStatus.CREATED);
+        return new ResponseEntity<UserDto2>(userResponse, HttpStatus.CREATED);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/users/{id}")
-    public ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDto, @PathVariable Long id) {
+    public ResponseEntity<UserDto2> updateUser(@RequestBody UserDto2 userDto, @PathVariable Long id) {
 
         // convert DTO to Entity
         User userRequest = modelMapper.map(userDto, User.class);
         User user = userService.updateUser(id, userRequest);
         // Entity to DTO
-        UserDto userResponse = modelMapper.map(user, UserDto.class);
+        UserDto2 userResponse = modelMapper.map(user, UserDto2.class);
         return ResponseEntity.ok().body(userResponse);
     }
 
