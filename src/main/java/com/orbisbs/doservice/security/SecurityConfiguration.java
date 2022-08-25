@@ -13,9 +13,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 @EnableWebSecurity
 @AllArgsConstructor
+
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService userDetailsService;
@@ -25,17 +27,21 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService);
     }
 
+
+
     @Bean
     public PasswordEncoder getPasswordEncoder() {
-         return new BCryptPasswordEncoder();
+         return NoOpPasswordEncoder.getInstance();
     }
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-//        http.authorizeRequests()
-//                .antMatchers("/cars").hasRole("ADMIN")
-//                .antMatchers("/users").hasAnyRole("USER", "ADMIN")
-//                .and().formLogin();
+
+        http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/cars").hasRole("ADMIN")
+                .antMatchers("/users").hasRole("ADMIN")
+                .and().httpBasic();
     }
 
 }
