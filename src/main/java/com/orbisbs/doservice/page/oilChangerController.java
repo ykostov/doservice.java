@@ -1,4 +1,4 @@
-package com.orbisbs.doservice.oilchange;
+package com.orbisbs.doservice.page;
 
 import com.orbisbs.doservice.cars.Car;
 import com.orbisbs.doservice.cars.CarService;
@@ -12,7 +12,7 @@ import java.util.*;
 
 @RestController
 @AllArgsConstructor
-public class oilPageController {
+public class oilChangerController {
 
     private final CarService carService;
     private HashMap<String, Integer> carsOil;
