@@ -7,8 +7,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Data
-public class UserDto {
-    private Long id;
+public class UserDto2 {
     private String userName;
-    private Set<Car> cars = new HashSet<>();
+    private String password;
+    private String roles;
 }

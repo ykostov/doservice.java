@@ -1,4 +1,4 @@
-package com.orbisbs.doservice;
+package com.orbisbs.doservice.handlers;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

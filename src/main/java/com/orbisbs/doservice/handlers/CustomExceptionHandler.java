@@ -1,4 +1,4 @@
-package com.orbisbs.doservice;
+package com.orbisbs.doservice.handlers;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

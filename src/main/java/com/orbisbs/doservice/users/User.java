@@ -29,8 +29,10 @@ public class User {
     private Long id;
 
     @Size(min = 2, message = "name must be >= 2")
-    private String name;
-
+    private String userName;
+    private String password;
+//    private boolean active;
+    private String roles;
 
     @OneToMany(mappedBy = "user")
     private Set<Car> cars = new HashSet<>();
