@@ -42,17 +42,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
 
-        http.csrf().disable()
-                .authorizeRequests()
+//        http.csrf().disable()
+//                .authorizeRequests()
 //                .antMatchers("/cars").hasRole("ADMIN")
 //                .antMatchers("/users").hasRole("ADMIN")
 //                .and().httpBasic();
+
+        http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/v3/api-docs/**").permitAll()
+                .antMatchers("/swagger-ui/**").permitAll()
                 .antMatchers("/auth").permitAll().anyRequest().authenticated()
                 .and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-
-
 
     }
 
