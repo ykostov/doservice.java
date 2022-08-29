@@ -57,8 +57,9 @@ public class UserController {
     @Operation(summary = "Add a user")
     @PostMapping
     public ResponseEntity<UserDto2> addUser(@Valid @RequestBody UserDto2 userDto) {
+        String password = userDto.getPassword();
         User userRequest = modelMapper.map(userDto, User.class);
-        User user = userService.addUser(userRequest);
+        User user = userService.addUser(userRequest, password);
         // convert entity to DTO
         UserDto2 userResponse = modelMapper.map(user, UserDto2.class);
 
