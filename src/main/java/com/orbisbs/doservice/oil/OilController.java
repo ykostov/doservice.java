@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -23,6 +24,7 @@ import java.util.stream.Collectors;
 @RestController
 @Tag(name="Oil change CRUD", description = "Create / Remove / Update / Delete Oil (Logic - A car has many oil (changes) with info at what mileage they were made)")
 @RequestMapping("/oil")
+@SecurityRequirement(name = "bearerAuth")
 public class OilController {
 
     private final OilService oilService;

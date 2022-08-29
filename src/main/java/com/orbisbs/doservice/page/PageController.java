@@ -13,6 +13,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +42,7 @@ public class PageController {
     }
 
     @Operation(summary = "Assign an Oil change to a Car")
+    @SecurityRequirement(name = "bearerAuth")
     @PutMapping("/car/{carId}/oil/{oilId}")
     public void enrollOilChangeToCar(@PathVariable Long carId,
                                      @PathVariable Long oilId) {
@@ -57,6 +59,7 @@ public class PageController {
             @ApiResponse(responseCode = "404", description = "User/Car not found",
                     content = @Content) })
     @PutMapping("/users/{userId}/car/{carId}")
+    @SecurityRequirement(name = "bearerAuth")
     public void enrollCarToUser(@PathVariable Long userId,
                                 @PathVariable Long carId) {
         userService.enrollCarToUser(userId, carId);
