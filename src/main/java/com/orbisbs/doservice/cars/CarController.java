@@ -4,10 +4,13 @@ import com.orbisbs.doservice.oil.OilDto;
 import com.orbisbs.doservice.users.User;
 import com.orbisbs.doservice.users.UserService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -23,6 +26,8 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @Tag(name="Car CRUD", description = "Create / Remove / Update / Delete Car")
 @RequestMapping("/cars")
+
+@SecurityRequirement(name = "basicAuth")
 public class CarController {
 
 
