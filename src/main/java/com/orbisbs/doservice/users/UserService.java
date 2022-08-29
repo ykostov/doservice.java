@@ -4,6 +4,7 @@ import com.orbisbs.doservice.cars.Car;
 import com.orbisbs.doservice.cars.CarRepository;
 import com.orbisbs.doservice.oil.OilRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,6 +17,8 @@ public class UserService {
     private final UserRepository userRepository;
     private final CarRepository carRepository;
     private final OilRepository oilRepository;
+    private final PasswordEncoder passwordEncoder;
+
 
     public User getUser(Long id) {
         return userRepository.findById(id).orElse(null);
@@ -27,7 +30,8 @@ public class UserService {
         return users;
     }
 
-    public User addUser(User user) {
+    public User addUser(User user, String password) {
+        user.setPassword(passwordEncoder.encode(password));
         userRepository.save(user);
         return user;
     }
