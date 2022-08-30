@@ -16,6 +16,6 @@ public class CarDto {
     private String drivetrain;
     private String oilFrequency;
     private String mileage;
-    @JsonIgnore
+
     private Set<Oil> oil = new HashSet<>();
 }
