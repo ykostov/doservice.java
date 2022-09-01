@@ -1,9 +1,7 @@
 package com.orbisbs.doservice.users;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.orbisbs.doservice.cars.Car;
-import com.orbisbs.doservice.oil.Oil;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,20 +20,20 @@ import java.util.Set;
 
 @Table(name = "users", schema = "public")
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
 
-    @Column(name = "id", nullable = false)
-    private Long id;
+  @Column(name = "id", nullable = false)
+  private Long id;
 
-    @Size(min = 2, message = "name must be >= 2")
-    private String userName;
-    private String password;
-//    private boolean active;
-    private String roles;
+  @Size(min = 2, message = "name must be >= 2")
+  private String userName;
+  private String password;
+  //    private boolean active;
+  private String roles;
 
-    @OneToMany(mappedBy = "user")
-    private Set<Car> cars = new HashSet<>();
+  @OneToMany(mappedBy = "user")
+  private Set<Car> cars = new HashSet<>();
 
 
 }

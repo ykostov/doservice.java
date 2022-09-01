@@ -15,15 +15,15 @@ import java.util.Optional;
 @AllArgsConstructor
 public class MyUserDetailsService implements UserDetailsService {
 
-    private final UserRepository userRepository;
+  private final UserRepository userRepository;
 
-    @Override
-    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+  @Override
+  public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 
-        Optional<User> user = userRepository.findByUserName(userName);
+    Optional<User> user = userRepository.findByUserName(userName);
 
-        user.orElseThrow(() -> new UsernameNotFoundException("Not found: " + userName));
+    user.orElseThrow(() -> new UsernameNotFoundException("Not found: " + userName));
 
-        return user.map(MyUserDetails::new).get();
-    }
+    return user.map(MyUserDetails::new).get();
+  }
 }

@@ -9,11 +9,10 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-public class ErrorResponse
-{
+public class ErrorResponse {
 
-    private String message;
+  private String message;
 
-    private List<String> details;
+  private List<String> details;
 
 }

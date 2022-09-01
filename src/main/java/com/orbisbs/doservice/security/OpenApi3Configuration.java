@@ -1,4 +1,5 @@
 package com.orbisbs.doservice.security;
+
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 
@@ -13,8 +14,8 @@ import io.swagger.v3.oas.annotations.security.SecurityScheme;
         type = SecuritySchemeType.HTTP,
         scheme = "basic"
 )
-public class OpenAPI30Configuration {
+public class OpenApi3Configuration {
 
-    // currently nothing here
+  // currently nothing here
 
 }

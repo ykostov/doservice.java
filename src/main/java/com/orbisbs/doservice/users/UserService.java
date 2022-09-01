@@ -14,43 +14,43 @@ import java.util.List;
 @AllArgsConstructor
 public class UserService {
 
-    private final UserRepository userRepository;
-    private final CarRepository carRepository;
-    private final OilRepository oilRepository;
-    private final PasswordEncoder passwordEncoder;
+  private final UserRepository userRepository;
+  private final CarRepository carRepository;
+  private final OilRepository oilRepository;
+  private final PasswordEncoder passwordEncoder;
 
 
-    public User getUser(Long id) {
-        return userRepository.findById(id).orElse(null);
-    }
+  public User getUser(Long id) {
+    return userRepository.findById(id).orElse(null);
+  }
 
-    public List<User> getAllUsers() {
-        List<User> users = new ArrayList<>();
-        userRepository.findAll().forEach(users::add);
-        return users;
-    }
+  public List<User> getAllUsers() {
+    List<User> users = new ArrayList<>();
+    userRepository.findAll().forEach(users::add);
+    return users;
+  }
 
-    public User addUser(User user, String password) {
-        user.setPassword(passwordEncoder.encode(password));
-        userRepository.save(user);
-        return user;
-    }
+  public User addUser(User user, String password) {
+    user.setPassword(passwordEncoder.encode(password));
+    userRepository.save(user);
+    return user;
+  }
 
-    public User updateUser(Long id, User user) {
-        user.setId(id);
-        return userRepository.save(user);
-    }
+  public User updateUser(Long id, User user) {
+    user.setId(id);
+    return userRepository.save(user);
+  }
 
-    public void deleteUser(Long id) {
-        userRepository.deleteById(id);
-    }
+  public void deleteUser(Long id) {
+    userRepository.deleteById(id);
+  }
 
-    public User enrollCarToUser(Long userId, Long carId) {
-        User user = userRepository.findById(userId).get();
-        Car car = carRepository.findById(carId).get();
-        car.enrollUserForCar(user);
-        carRepository.save(car);
-        return userRepository.save(user);
-    }
+  public User enrollCarToUser(Long userId, Long carId) {
+    User user = userRepository.findById(userId).get();
+    Car car = carRepository.findById(carId).get();
+    car.enrollUserForCar(user);
+    carRepository.save(car);
+    return userRepository.save(user);
+  }
 
 }

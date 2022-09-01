@@ -5,8 +5,8 @@ import lombok.Data;
 
 @Data
 public class OilDto {
-    private Long id;
-    private String mileage;
-    private String date;
-    private Car car;
+  private Long id;
+  private String mileage;
+  private String date;
+  private Car car;
 }

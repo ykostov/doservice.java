@@ -14,18 +14,17 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityBasicConfiguration extends WebSecurityConfigurerAdapter {
 
 
-    @Override
-    public void configure(HttpSecurity http) throws Exception {
+  @Override
+  public void configure(HttpSecurity http) throws Exception {
 
 
+    http.csrf().disable()
+            .requestMatchers().antMatchers("/cars/**")
+            .and()
+            .authorizeRequests().anyRequest().hasRole("ADMIN")
+            .and().httpBasic();
 
-        http.csrf().disable()
-                .requestMatchers().antMatchers("/cars/**")
-                .and()
-                .authorizeRequests().anyRequest().hasRole("ADMIN")
-                .and().httpBasic();
 
-
-    }
+  }
 
 }
