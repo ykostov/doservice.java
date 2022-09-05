@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Create Car</title>
+</head>
+<body>
+
+<form th:action="@{/cars}" th:object = ${car} method="POST">
+
+    <div class="form-group">
+        <label>Brand</label>
+        <input type="text" class="form-control" th:field = "*{brand}" placeholder="Enter Brand">
+    </div>
+    <div class="form-group">
+        <label>Model</label>
+        <input type="text" class="form-control" th:field = "*{model}" placeholder="Enter model">
+    </div>
+    <div class="form-group">
+        <label>Gen</label>
+        <input type="text" class="form-control" th:field = "*{gen}" placeholder="Enter gen">
+    </div>
+    <div class="form-group">
+        <label>Drivetrain</label>
+        <input type="text" class="form-control" th:field = "*{drivetrain}" placeholder="Enter drivetrain">
+    </div>
+<!--    <div class="form-group">-->
+<!--        <label>Oil Frequency</label>-->
+<!--        <input type="text" name="OilFrequency" class="form-control" th:field = "*{oil_frequency}" placeholder="Enter oil frequency">-->
+<!--    </div>-->
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+</body>
+</html>
