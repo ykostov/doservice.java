@@ -100,9 +100,10 @@ public class CarController {
     }
 
     @Operation(summary = "delete a Car by its id")
-    @DeleteMapping("/{id}")
-    public void deleteCar(@PathVariable Long id) {
+    @GetMapping("/delete/{id}")
+    public String deleteCar(@PathVariable Long id) {
         carService.deleteCar(id);
+        return "redirect:/cars";
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/car/{carId}/oil/{oilId}")

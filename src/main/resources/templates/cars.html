@@ -38,6 +38,8 @@
         <td>
             <a th:href = "@{/cars/edit/{id}(id=${car.id})}"
                class = "btn btn-primary">Update</a>
+            <a th:href = "@{/cars/delete/{id}(id=${car.id})}"
+               class = "btn btn-danger">Delete</a>
         </td>
     </tr>
 
