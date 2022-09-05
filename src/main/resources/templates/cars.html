@@ -7,35 +7,41 @@
     <title>Cars</title>
 </head>
 <body>
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+        <img src="https://static.thenounproject.com/png/963363-200.png" width="60" height="60" class="d-inline-block align-top" alt="">
+        DoService Application
+    </a>
+</nav>
 <h1>Cars</h1>
 <div class="row">
     <div class="col-lg-3">
         <a th:href="@{/cars/new}" class="btn btn-primary btn-sm mb-3"> Add Car</a>
     </div>
 </div>
-<table class="table">
-    <thead>
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
     <tr>
-        <th scope="col">id</th>
-        <th scope="col">brand</th>
-        <th scope="col">model</th>
-        <th scope="col">gen</th>
-        <th scope="col">drivetrain</th>
-        <th scope="col">oil frequency</th>
-        <th scope="col">mileage</th>
-        <th scope="col">oil</th>
+        <th scope="col" class="text-center">id</th>
+        <th scope="col" class="text-center">brand</th>
+        <th scope="col" class="text-center">model</th>
+        <th scope="col" class="text-center">gen</th>
+        <th scope="col" class="text-center">drivetrain</th>
+        <th scope="col" class="text-center">oil frequency</th>
+        <th scope="col" class="text-center">mileage</th>
+        <th scope="col" class="text-center">oil</th>
         <th scope="col">ADMIN</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="car :${cars}">
-        <td th:text=${car.getId}></td>
-        <td th:text=${car.getBrand}></td>
-        <td th:text=${car.getModel}></td>
-        <td th:text=${car.getGen}></td>
-        <td th:text=${car.getDrivetrain}></td>
-        <td th:text=${car.getOilFrequency}></td>
-        <td th:text=${car.getMileage}></td>
+        <td th:text=${car.getId} class="text-center"></td>
+        <td th:text=${car.getBrand} class="text-center"></td>
+        <td th:text=${car.getModel} class="text-center"></td>
+        <td th:text=${car.getGen} class="text-center"></td>
+        <td th:text=${car.getDrivetrain} class="text-center"></td>
+        <td th:text=${car.getOilFrequency} class="text-center"></td>
+        <td th:text=${car.getMileage} class="text-center"></td>
         <td>
             <table class="table">
                 <thead>
@@ -66,6 +72,20 @@
 
     </tbody>
 </table>
+
+
+<div class="container">
+    <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+        </ul>
+        <p class="text-center text-muted">&copy; 2022 Company, Inc</p>
+    </footer>
+</div>
 
 </body>
 </html>
