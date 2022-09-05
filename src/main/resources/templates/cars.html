@@ -29,7 +29,7 @@
         <th scope="col" class="text-center">drivetrain</th>
         <th scope="col" class="text-center">oil frequency</th>
         <th scope="col" class="text-center">mileage</th>
-        <th scope="col" class="text-center">oil</th>
+        <th scope="col" class="text-center">oil changes</th>
         <th scope="col">ADMIN</th>
     </tr>
     </thead>
@@ -59,6 +59,13 @@
             </table>
         </td>
         <td>
+            <a th:href="@{/oil_change/car/{id}(id=${car.id})}">
+
+                <button name="command" type="submit" class="btn btn-warning">
+                    Check Oil
+                </button>
+            </a>
+
             <a th:href="@{/cars/edit/{id}(id=${car.id})}"
                class="btn btn-primary">Update</a>
             <a th:href="@{/cars/delete/{id}(id=${car.id})}">
