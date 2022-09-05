@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Cars</title>
+</head>
+<body>
+<h1>Cars</h1>
+<div class = "row">
+    <div class = "col-lg-3">
+        <a th:href = "@{/cars/new}" class = "btn btn-primary btn-sm mb-3"> Add Car</a>
+    </div>
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">id</th>
+        <th scope="col">brand</th>
+        <th scope="col">model</th>
+        <th scope="col">gen</th>
+        <th scope="col">drivetrain</th>
+        <th scope="col">oil frequency</th>
+        <th scope="col">mileage</th>
+        <th scope="col">ADMIN</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="car :${cars}">
+        <td th:text=${car.getId}></td>
+        <td th:text=${car.getBrand}></td>
+        <td th:text=${car.getModel}></td>
+        <td th:text=${car.getGen}></td>
+        <td th:text=${car.getDrivetrain}></td>
+        <td th:text=${car.getOilFrequency}></td>
+        <td th:text=${car.getMileage}></td>
+        <td>
+            <a th:href = "@{/cars/edit/{id}(id=${car.id})}"
+               class = "btn btn-primary">Update</a>
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+
+</body>
+</html>
