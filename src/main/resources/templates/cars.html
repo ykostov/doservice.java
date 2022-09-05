@@ -8,9 +8,9 @@
 </head>
 <body>
 <h1>Cars</h1>
-<div class = "row">
-    <div class = "col-lg-3">
-        <a th:href = "@{/cars/new}" class = "btn btn-primary btn-sm mb-3"> Add Car</a>
+<div class="row">
+    <div class="col-lg-3">
+        <a th:href="@{/cars/new}" class="btn btn-primary btn-sm mb-3"> Add Car</a>
     </div>
 </div>
 <table class="table">
@@ -23,6 +23,7 @@
         <th scope="col">drivetrain</th>
         <th scope="col">oil frequency</th>
         <th scope="col">mileage</th>
+        <th scope="col">oil</th>
         <th scope="col">ADMIN</th>
     </tr>
     </thead>
@@ -36,9 +37,25 @@
         <td th:text=${car.getOilFrequency}></td>
         <td th:text=${car.getMileage}></td>
         <td>
-            <a th:href = "@{/cars/edit/{id}(id=${car.id})}"
-               class = "btn btn-primary">Update</a>
-            <a th:href = "@{/cars/delete/{id}(id=${car.id})}">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">date</th>
+                    <th scope="col">mileage</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="oilChange :${car.getOil}">
+                        <td th:text=${oilChange.date}></td>
+                        <td th:text=${oilChange.mileage}></td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+            <a th:href="@{/cars/edit/{id}(id=${car.id})}"
+               class="btn btn-primary">Update</a>
+            <a th:href="@{/cars/delete/{id}(id=${car.id})}">
 
                 <button name="command" type="submit" class="btn btn-danger" title="Delete" onclick="return confirm('Are you sure?');">
                     Delete
