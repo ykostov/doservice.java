@@ -38,8 +38,12 @@
         <td>
             <a th:href = "@{/cars/edit/{id}(id=${car.id})}"
                class = "btn btn-primary">Update</a>
-            <a th:href = "@{/cars/delete/{id}(id=${car.id})}"
-               class = "btn btn-danger">Delete</a>
+            <a th:href = "@{/cars/delete/{id}(id=${car.id})}">
+
+                <button name="command" type="submit" class="btn btn-danger" title="Delete" onclick="return confirm('Are you sure?');">
+                    Delete
+                </button>
+            </a>
         </td>
     </tr>
 
