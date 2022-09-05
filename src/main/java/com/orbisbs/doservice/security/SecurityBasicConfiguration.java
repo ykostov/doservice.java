@@ -20,9 +20,9 @@ public class SecurityBasicConfiguration extends WebSecurityConfigurerAdapter {
 
 
         http.csrf().disable()
-                .requestMatchers().antMatchers("/cars/**")
-                .and()
-                .authorizeRequests().anyRequest().hasRole("ADMIN")
+                .authorizeRequests()
+                .antMatchers("/cars/**").hasRole("ADMIN")
+                .antMatchers("/oil_change/**").hasRole("ADMIN")
                 .and().httpBasic();
 
 
