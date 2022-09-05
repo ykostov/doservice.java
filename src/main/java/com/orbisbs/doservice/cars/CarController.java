@@ -1,27 +1,19 @@
 package com.orbisbs.doservice.cars;
 
-import com.orbisbs.doservice.oil.OilDto;
 import com.orbisbs.doservice.users.User;
-import com.orbisbs.doservice.users.UserService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
-import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import org.modelmapper.ModelMapper;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,9 +25,15 @@ import java.util.stream.Collectors;
 @SecurityRequirement(name = "basicAuth")
 public class CarController {
 
-
     private final CarService carService;
     private final ModelMapper modelMapper;
+
+    /**
+     * Get single car by id
+     *
+     * @param id
+     * @return Response of ok (200) and body of Car
+     */
 
     @Operation(summary = "Get a car by its id")
     @ApiResponses(value = {
@@ -56,6 +54,12 @@ public class CarController {
         return ResponseEntity.ok().body(carResponse);
     }
 
+    /**
+     * Get all cars
+     * @param model
+     * @return html rendered page (thymeleaf) in /cars (cars.html)
+     */
+
     @Operation(summary = "Get all cars")
     @GetMapping
     public String getAllCars(Model model) {
@@ -64,12 +68,11 @@ public class CarController {
         return "cars";
     }
 
-    @GetMapping("/new")
-    public String createCarForm(Model model) {
-        Car car = new Car();
-        model.addAttribute("car", car);
-        return "create_car";
-    }
+    /**
+     * Creation of Car
+     * @param carDto
+     * @return redirects to /cars (thymeleaf)
+     */
 
     @Operation(summary = "Add an Car")
     @PostMapping
@@ -80,6 +83,14 @@ public class CarController {
 
         return "redirect:/cars";
     }
+
+    /**
+     * Update car by given id, CarDto class and a model from thymeleaf
+     * @param id
+     * @param carDto
+     * @param model
+     * @return redirects to /cars
+     */
 
     @Operation(summary = "update a Car by its id")
     @PostMapping("/{id}")
@@ -93,11 +104,11 @@ public class CarController {
         return "redirect:/cars";
     }
 
-    @GetMapping("/edit/{id}")
-    public String editCarForm(@PathVariable Long id, Model model) {
-        model.addAttribute("car", carService.getCar(id));
-        return "edit_car";
-    }
+    /**
+     * Delete a car by given id
+     * @param id
+     * @return redirects to /cars (thymeleaf)
+     */
 
     @Operation(summary = "delete a Car by its id")
     @GetMapping("/delete/{id}")
@@ -106,10 +117,33 @@ public class CarController {
         return "redirect:/cars";
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/car/{carId}/oil/{oilId}")
-    public void enrollOilChangeToCar(@PathVariable Long carId,
-                                @PathVariable Long oilId) {
-        carService.enrollOilChangeToCar(carId, oilId);
+
+    /**
+     * Method for car creation form, form in it then redirects to addCar(/1)
+     * @param model
+     * @return opens edit car form
+     */
+
+    @GetMapping("/new")
+    public String createCarForm(Model model) {
+        Car car = new Car();
+        model.addAttribute("car", car);
+        return "create_car";
     }
+
+
+    /**
+     * Method for car edit form, form in it then redirects to updateCar(/3)
+     * @param id
+     * @param model
+     * @return opens edit car form
+     */
+
+    @GetMapping("/edit/{id}")
+    public String editCarForm(@PathVariable Long id, Model model) {
+        model.addAttribute("car", carService.getCar(id));
+        return "edit_car";
+    }
+
 
 }
